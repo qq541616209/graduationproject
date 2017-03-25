@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/btncontent"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bigbus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="大客车"
+            android:textSize="15sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/smallbus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="小客车"
+            android:layout_weight="1"
+            android:textSize="15sp"/>
+        <Button
+            android:id="@+id/smallcar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="小轿车"
+            android:layout_weight="1"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    <ImageSwitcher
+        android:id="@+id/imgswt"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"></ImageSwitcher>
+    <LinearLayout
+        android:id="@+id/plclayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/holo_green_light" />
+
+            <EditText
+                android:id="@+id/startplc"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="起始地"
+                android:gravity="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/holo_red_light" />
+
+            <EditText
+                android:id="@+id/endplc"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="目的地"
+                android:gravity="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/rightnow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:text="立即用车"
+                android:textSize="15sp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:text="预约用车"
+                android:layout_weight="1"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
