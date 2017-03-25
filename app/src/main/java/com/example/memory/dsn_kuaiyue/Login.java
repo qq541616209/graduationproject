@@ -37,7 +37,7 @@ public class Login extends Activity{
             public void onClick(View v) {
                 Thread thread = new Thread(runnable);
                 thread.start();
-                while (thread.isAlive())
+                while (thread.isAlive());
                 if (username.equals(lname.getText().toString())&&username.length()>0) {
                     new AlertDialog.Builder(Login.this).setTitle("提示").setMessage("登录成功").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override

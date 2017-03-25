@@ -30,7 +30,7 @@
             android:id="@+id/rpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textVisiblePassword"/>
+            android:inputType="textPassword"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:id="@+id/rrpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textVisiblePassword"/>
+            android:inputType="textPassword"/>
     </LinearLayout>
         <Button
             android:layout_width="wrap_content"
