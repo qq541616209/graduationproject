@@ -2,6 +2,7 @@ package com.example.memory.dsn_kuaiyue;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -19,16 +20,12 @@ import java.sql.SQLException;
 
 public class Login extends Activity{
     private Button login,regiser;
-    private Connection con = null;
     private EditText lname,lpassword;
-    private PreparedStatement statement = null;
-    ResultSet resultSet = null;
+    private String username = new String();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
-        new Thread(runnable).start();
 
         login = (Button)findViewById(R.id.loginbtn);
         regiser = (Button)findViewById(R.id.registerbtn);
@@ -38,23 +35,8 @@ public class Login extends Activity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int count = 2;
-                if (statement != null) {
-                    try {
-                        statement.setString(1, lname.getText().toString());
-                        statement.setString(2, lpassword.getText().toString());
-                        resultSet = statement.executeQuery();
-                        if (resultSet.next()) {
-                            count = resultSet.getInt(1);
-                        }
-                        resultSet.close();
-                        statement.close();
-                        con.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (count == 1) {
+                new Thread(runnable).start();
+                if (username.equals(lname.getText().toString())&&username.length()>0) {
                     new AlertDialog.Builder(Login.this).setTitle("提示").setMessage("登录成功").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -64,14 +46,30 @@ public class Login extends Activity{
                 }
             }
         });
+        regiser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login.this,Register.class);
+                startActivity(i);
+            }
+        });
     }
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            con = Consql.getInstance().getCon();
             try {
-                statement = con.prepareStatement("select count(*) from user where username=? and password=?");
-            }catch (SQLException e){
+                Connection con = Consql.getInstance().getCon();
+                PreparedStatement statement = con.prepareStatement("select * from user where username=? and password=?");
+                statement.setString(1, lname.getText().toString());
+                statement.setString(2, lpassword.getText().toString());
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    username = resultSet.getString("username");
+                }
+                resultSet.close();
+                statement.close();
+                con.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
