@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity
         headerView = navigationView.getHeaderView(0);
         tv = (TextView)headerView.findViewById(R.id.login);
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //recyclerView.setHasFixedSize(true);
         ordercar.setOnClickListener(new OnClickListener() {
 
             @Override
