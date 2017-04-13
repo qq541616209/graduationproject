@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class Fragmentfood extends Fragment{
         public void onBindViewHolder(MyViewHolder holder, int position) {
             Picasso.with(getContext()).load(new File(imglist.get(position))).resize(80,80).centerCrop().into(holder.shopimg);
             holder.shoptital.setText(titlelist.get(position));
-            holder.gradetext.setText(Float.toString(gradelist.get(position)));
+            holder.gradetext.setText(String.valueOf(new BigDecimal(gradelist.get(position)).setScale(1,BigDecimal.ROUND_HALF_UP).floatValue()));
             holder.shopgrade.setRating(gradelist.get(position));
         }
 

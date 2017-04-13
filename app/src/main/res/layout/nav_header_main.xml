@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/login"
         android:clickable="true"
-        android:text="登录"
         android:textSize="20sp"
         android:textColor="@android:color/holo_blue_bright"
         android:layout_gravity="bottom|center"

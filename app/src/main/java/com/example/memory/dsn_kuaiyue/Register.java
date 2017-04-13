@@ -71,6 +71,7 @@ public class Register extends Activity {
                     preparedStatement.setString(2,rpassword.getText().toString());
                     preparedStatement.executeUpdate();
                     username = rusername.getText().toString();
+                    preparedStatement.close();
                 }
                 resultSet.close();
                 statement.close();

@@ -1,7 +1,6 @@
 package com.example.memory.dsn_kuaiyue;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -39,12 +38,16 @@ public class Login extends Activity{
                 thread.start();
                 while (thread.isAlive());
                 if (username.equals(lname.getText().toString())&&username.length()>0) {
-                    new AlertDialog.Builder(Login.this).setTitle("提示").setMessage("登录成功").setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // TODO Auto-generated method stub
-                            finish();
-                        } } ).show();
+                    Intent i = new Intent(Login.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
+                    /*NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+                    View headerView = navigationView.getHeaderView(0);
+                    TextView tv = (TextView)headerView.findViewById(R.id.login);
+                    tv.setText(username);
+                    finish();*/
+                }else {
+                    new AlertDialog.Builder(Login.this).setTitle("提示").setMessage("用户名或密码错误").setPositiveButton("确定",null).show();
                 }
             }
         });
@@ -67,6 +70,9 @@ public class Login extends Activity{
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()) {
                     username = resultSet.getString("username");
+                    Data data = (Data)getApplicationContext();
+                    data.setUserName(username);
+                    data.setMyUserName(username);
                 }
                 resultSet.close();
                 statement.close();

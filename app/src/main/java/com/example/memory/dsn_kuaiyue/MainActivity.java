@@ -3,9 +3,7 @@ package com.example.memory.dsn_kuaiyue;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -50,6 +48,8 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView)findViewById(R.id.nav_view);
         headerView = navigationView.getHeaderView(0);
         tv = (TextView)headerView.findViewById(R.id.login);
+        Data data = (Data)getApplicationContext();
+        tv.setText(data.getMyUserName());
 
         ordercar.setOnClickListener(new OnClickListener() {
 
@@ -81,14 +81,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,Login.class);
                 startActivity(i);
-            }
-        });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                finish();
             }
         });
 
@@ -146,6 +139,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_rcd) {
 
+        }else if(id == R.id.nav_buyrcd){
+            Intent i = new Intent(MainActivity.this,MyOrder.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
